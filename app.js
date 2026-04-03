@@ -4,9 +4,13 @@ const { open } = require("sqlite");
 const sqlite3 = require("sqlite3");
 const format = require("date-fns/format");
 const isMatch = require("date-fns/isMatch");
+const cors = require('cors')
 var isValid = require("date-fns/isValid");
 const app = express();
+
 app.use(express.json());
+app.use(cors())
+const PORT = process.env.PORT || 3000
 
 let database;
 const initializeDBandServer = async () => {
@@ -15,8 +19,8 @@ const initializeDBandServer = async () => {
       filename: path.join(__dirname, "todoApplication.db"),
       driver: sqlite3.Database,
     });
-    app.listen(3000, () => {
-      console.log("Server is running on http://localhost:3000/");
+    app.listen(PORT, () => {
+      console.log(`Server is running on ${PORT}`);
     });
   } catch (error) {
     console.log(`DataBase error is ${error.message}`);
@@ -33,6 +37,10 @@ app.get("/todos/", async (request, response) => {
   response.send(responseResult);
 });
 */
+
+app.get("/", (req, res) => {
+  res.send("Todo API Running");
+});
 
 //api 1
 
