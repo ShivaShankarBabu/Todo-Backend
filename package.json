@@ -2,10 +2,10 @@
   "name": "todo-application",
   "version": "1.0.0",
   "description": "Todo Backend API",
-  "main": "App.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node App.js",
-    "dev": "nodemon App.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
